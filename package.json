@@ -1,0 +1,22 @@
+{
+  "name": "name_scrambler",
+  "version": "1.0.0",
+  "description": "javascript practice and learning",
+  "main": "word-scrambler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dowjohn/namescrambler.git"
+  },
+  "author": "John Dow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dowjohn/namescrambler/issues"
+  },
+  "homepage": "https://github.com/dowjohn/namescrambler#readme",
+  "dependencies": {
+    "prompt": "^1.0.0"
+  }
+}
