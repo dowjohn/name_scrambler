@@ -1,14 +1,8 @@
+'use strict'
 const prompt = require('prompt')
 prompt.start()
-prompt.get(['myString'], function (err, result) {
-  const charactersString = result.myString.trim().toLowerCase()
-  console.log(scramble(concatMultipleStringsIntoArray(charactersString)))
-  if (err != null) {
-    console.log(err)
-  }
-})
 
-function scramble (arrayOfLetters) {
+const scramble = (arrayOfLetters) => {
   let lettersArray = arrayOfLetters
   let outArray = new Array(lettersArray.length)
   for (let i = 0; i < outArray.length; i++) {
@@ -23,14 +17,27 @@ function scramble (arrayOfLetters) {
 const numGen = (letters) =>
   Math.floor(Math.random() * letters.length)
 
-// takes as many strings as inputted and returns them as an array of characters
 const concatMultipleStringsIntoArray = (...args) => {
-  const newArray = [...args]
-  return newArray.reduce((result, word) => {
-    const splitted = [...word]
-    splitted.forEach(character => {
-      result.push(character)
-    })
-    return result
-  }, [])
+  return [...args].reduce(
+    (previous, current) => {
+      const splitted = current.split('')
+      splitted.forEach((letter) => {
+        previous.push(letter)
+      })
+      return previous
+    }, [])
+  // const concat = (a, b) => [...a, ...b]
+  // return newArray.reduce((concat, []))
 }
+
+const promptForInput = (callback) => {
+  prompt.get(['myString'], function (err, result) {
+    if (err !== null) {
+      console.log(err)
+    } else {
+      console.log(callback(concatMultipleStringsIntoArray(result.myString.trim())))
+    }
+  })
+}
+
+promptForInput(scramble)
