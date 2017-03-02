@@ -20,14 +20,8 @@ const numGen = (letters) =>
 const concatMultipleStringsIntoArray = (...args) => {
   return [...args].reduce(
     (previous, current) => {
-      const splitted = current.split('')
-      splitted.forEach((letter) => {
-        previous.push(letter)
-      })
-      return previous
+      return previous.concat(current.split(''))
     }, [])
-  // const concat = (a, b) => [...a, ...b]
-  // return newArray.reduce((concat, []))
 }
 
 const promptForInput = (callback) => {
