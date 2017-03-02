@@ -1,21 +1,19 @@
-var prompt = require('prompt')
-var resultWord1
+const prompt = require('prompt')
 prompt.start()
 
-prompt.get(['word1'], function (err, result) {
-  resultWord1 = result.word1.trim().toLowerCase()
-  console.log(scramble(concatMultipleStringsIntoArray(resultWord1)))
+prompt.get(['Word'], function (err, result) {
+  const charactersString = result.Word.trim().toLowerCase()
+  console.log(scramble(concatMultipleStringsIntoArray(charactersString)))
   if (err != null) {
     console.log(err)
   }
 })
 
 function scramble (arrayOfLetters) {
-  var lettersArray = arrayOfLetters
-  var outArray = new Array(lettersArray.length)
-  var i
-  for (i = 0; i < outArray.length; i++) {
-    var letterInt = numGen(lettersArray)
+  let lettersArray = arrayOfLetters
+  let outArray = new Array(lettersArray.length)
+  for (let i = 0; i < outArray.length; i++) {
+    let letterInt = numGen(lettersArray)
     outArray[i] = lettersArray[letterInt]
     lettersArray.splice(letterInt, 1)
   }
@@ -23,16 +21,14 @@ function scramble (arrayOfLetters) {
   return outArray.join('').trim()
 }
 
-function numGen (letters) {
-  return Math.floor(Math.random() * letters.length)
-}
+const numGen = (letters) => Math.floor(Math.random() * letters.length)
 
 // takes as many strings as inputted
 function concatMultipleStringsIntoArray (/**/) {
-  var args = arguments
-  var arrayOfCharacters = []
-  for (var i = 0; i < args.length; i++) {
-    var wordSplit = args[i].split('')
+  const args = arguments
+  let arrayOfCharacters = []
+  for (let i = 0; i < args.length; i++) {
+    let wordSplit = args[i].split('')
     wordSplit.forEach(function (letter) {
       arrayOfCharacters.push(letter)
     })
